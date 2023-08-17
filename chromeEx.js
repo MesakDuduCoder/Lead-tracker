@@ -11,14 +11,12 @@ if(leadsFromLS){
   render(myLeads)
 }
 
-
 tabBtn.addEventListener("click", function(){
   chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
     myLeads.push(tabs[0].url)
     localStorage.setItem("myLeads",JSON.stringify(myLeads))
     render(myLeads)
   })
-
 })
 
 function render(leads){
@@ -29,7 +27,6 @@ function render(leads){
        <a target= '_blank' href=' ${ leads[i] }' > "${ leads[i] }"
        </a> 
    </li>`
-
 }
 ulEl.innerHTML = listItems
 }
@@ -39,14 +36,11 @@ inputBtn.addEventListener("click", function(){
   inputEl.value=""
   localStorage.setItem("myLeads", JSON.stringify(myLeads))
   render(myLeads)
-  console.log(localStorage.getItem("myLeads"))
-
 })
 
 delBtn.addEventListener("dblclick", function(){
   localStorage.clear()
   myLeads=[]
   render(myLeads)
-
 })
 
